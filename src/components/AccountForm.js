@@ -6,7 +6,7 @@ const AccountForm = ({ action, setToken }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const isLogin = action === "login";
-  const title = isLogin ? "Login" : "Register";
+  const title = isLogin ? "Log in" : "Register for an account";
   const oppositeTitle = isLogin ? "Register" : "Login";
   const oppositeAction = isLogin ? "register" : "login";
   //   const actionURL = isLogin ? API_LOGIN : API_REGISTER;
@@ -19,7 +19,7 @@ const AccountForm = ({ action, setToken }) => {
       body: { username, password },
       method: "POST",
     });
-    const token = data?.data?.token;
+    const token = data?.token;
     if (token) {
       localStorage.setItem("token", token);
       setUsername("");

@@ -62,7 +62,16 @@ const Routines = ({ routines, activities }) => {
             key={id}
             style={{ border: "2px solid black" }}
           >
-            {name}
+            <h3>Name:{name}</h3> <h4>Goal:{goal}</h4>{" "}
+            <h5>Created by: {creatorName}</h5>
+            {activities.map(({ id, name, count, duration, description }) => (
+              <div>
+                <h6>Activity: {name}</h6>
+                <p>Description:{description}</p>
+                <p>Count:{count}</p>
+                <p>Duration:{duration}</p>
+              </div>
+            ))}
           </div>
           //   {/* {routines.creatorName === userData.username ? (
           //   <button onClick={() => handleSubmit(routine.id)}>

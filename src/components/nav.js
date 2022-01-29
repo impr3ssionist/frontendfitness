@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
-const Nav = ({ token }) => {
+const Nav = ({ token, setToken }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const history = useHistory();
+
+  const Logout = () => {
+    localStorage.removeItem("token");
+    setToken("");
+    history.pushState("/");
+  };
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -22,7 +29,9 @@ const Nav = ({ token }) => {
           {isLoggedIn ? (
             <div>
               <span>
-                <Link to="/logout">Logout</Link>
+                <Link onClick={Logout} to="/logout">
+                  Logout
+                </Link>
               </span>
               <span>
                 <Link to="/myroutines">My routines</Link>
@@ -40,6 +49,12 @@ const Nav = ({ token }) => {
               </div>
             </div>
           )}
+          <span>
+            <Link to="/routines">Routines</Link>
+          </span>
+          <span>
+            <Link to="/activities">Activities</Link>
+          </span>
         </div>
       </div>
     </div>

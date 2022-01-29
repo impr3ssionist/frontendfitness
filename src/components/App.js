@@ -7,6 +7,7 @@ import {
   BrowserRouter as Router,
   Route,
 } from "react-router-dom/cjs/react-router-dom.min";
+import MyRoutines from "./MyRoutines";
 
 const App = () => {
   const [token, setToken] = useState("");
@@ -26,7 +27,7 @@ const App = () => {
     <div>
       <Router>
         <div className="nav-bar">
-          <Nav></Nav>
+          <Nav token={token} setToken={setToken}></Nav>
         </div>
         <Route exact path="/">
           <h1>Home</h1>
@@ -44,7 +45,7 @@ const App = () => {
           <h1> User</h1>
         </Route>
         <Route path="/myroutines">
-          <h1> My Routines</h1>
+          <MyRoutines token={token} />
         </Route>
         <Route path="/activities">
           <h1>Activities</h1>
