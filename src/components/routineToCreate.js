@@ -32,11 +32,11 @@ const NewRoutineForm = ({ token, setRoutines, routines, action }) => {
         const filteredRoutines = routines.filter(
           (Routine) => Routine._id !== RoutineId
         );
+        history.push("/routines");
         setRoutines([...filteredRoutines, routine]);
-        history.push("/myroutines");
       } else {
         //otherwise i am creating a new Routine, so take my old Routines and add this new one to the bottom
-        setRoutines([...routines, routine]);
+        setRoutines([routine, ...routines]);
       }
       //no matter what send users to the /Routines page when we are done
     } catch (error) {
